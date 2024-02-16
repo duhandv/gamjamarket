@@ -1,14 +1,16 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.2.2'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+    id 'io.spring.javaformat' version "${springJavaFormatVersion}"
 }
+apply plugin: 'io.spring.javaformat'
 
-group = 'project.duhan'
-version = '0.0.1-SNAPSHOT'
+group = "${projectGroup}"
+version = "${appVersion}"
 
 java {
-    sourceCompatibility = '21'
+    sourceCompatibility = "${javaVersion}"
 }
 
 repositories {
@@ -17,7 +19,14 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compileOnly "io.spring.javaformat:spring-javaformat-gradle-plugin:${springJavaFormatVersion}"
+}
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
 }
 
 tasks.named('test') {
