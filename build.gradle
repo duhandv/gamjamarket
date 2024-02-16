@@ -19,14 +19,13 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compileOnly "io.spring.javaformat:spring-javaformat-gradle-plugin:${springJavaFormatVersion}"
-}
-configurations {
-    all {
-        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-    }
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation "com.navercorp.fixturemonkey:fixture-monkey-starter:${fixtureMonkeyVersion}"
 }
 
 tasks.named('test') {
