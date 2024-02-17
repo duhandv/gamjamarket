@@ -24,15 +24,22 @@ public class Member {
     protected Member() {
     }
 
-    @Builder
     public Member(String loginId, String password, String phone) {
+        this(null, loginId, password, phone);
+    }
+
+    @Builder
+    private Member(Long id, String loginId, String password, String phone) {
+        this.id = id;
         this.loginId = loginId;
         this.password = password;
         this.phone = phone;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public void authenticate(String password) {
+        if (!this.password.equals(password)) {
+            throw new BadCredentialException();
+        }
     }
 
 }

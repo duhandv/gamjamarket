@@ -15,6 +15,8 @@ import project.duhan.gamjamarket.auth.controller.dto.MemberRegisterRequest;
 @RequestMapping("/api/auth")
 public class AuthController {
 
+    public static final String AUTHENTICATION = "Authentication";
+
     private final AuthService authService;
 
     public AuthController(AuthService authService) {
@@ -24,6 +26,14 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody MemberRegisterRequest request) {
         authService.register(request.loginId(), request.password(), request.phone());
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Void> login(@RequestBody MemberLoginRequest request, HttpServletRequest httpServletRequest) {
+        HttpSession session = httpServletRequest.getSession();
+        Long memberId = authService.login(request.loginId(), request.password());
+        session.setAttribute(AUTHENTICATION, memberId);
         return ResponseEntity.ok().build();
     }
 
