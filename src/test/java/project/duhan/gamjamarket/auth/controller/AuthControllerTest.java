@@ -1,0 +1,46 @@
+package project.duhan.gamjamarket.auth.controller;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import project.duhan.gamjamarket.auth.application.AuthService;
+import project.duhan.gamjamarket.auth.controller.dto.MemberRegisterRequest;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.willDoNothing;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest(AuthController.class)
+@ExtendWith(MockitoExtension.class)
+class AuthControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @MockBean
+    private AuthService authService;
+
+    @Test
+    void postMemberRegister() throws Exception {
+        MemberRegisterRequest request = new MemberRegisterRequest("loginId", "password", "01012341234");
+        String jsonContent = objectMapper.writeValueAsString(request);
+
+        willDoNothing().given(authService).register(any(), any(), any());
+
+        mockMvc.perform(post("/api/auth/register").content(jsonContent).contentType(MediaType.APPLICATION_JSON))
+            .andDo(print())
+            .andExpect(status().isOk());
+    }
+
+}
