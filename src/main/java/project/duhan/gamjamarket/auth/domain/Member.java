@@ -1,13 +1,18 @@
 package project.duhan.gamjamarket.auth.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
-
-
+@Entity
 @Getter
 public class Member {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String loginId;
@@ -16,37 +21,18 @@ public class Member {
 
     private String phone;
 
-    private LocalDateTime createdAt;
-
     protected Member() {
-
     }
 
-    public Member(Long id, String loginId, String password, String phone, LocalDateTime createdAt) {
-        this.id = id;
+    @Builder
+    public Member(String loginId, String password, String phone) {
         this.loginId = loginId;
         this.password = password;
         this.phone = phone;
-        this.createdAt = createdAt;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getLoginId() {
-        return loginId;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getPhone() {
-        return phone;
     }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+
 }
