@@ -2,9 +2,9 @@ package project.duhan.gamjamarket.auth.application;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.duhan.gamjamarket.auth.domain.BadCredentialException;
-import project.duhan.gamjamarket.auth.domain.Member;
-import project.duhan.gamjamarket.auth.domain.MemberRepository;
+import project.duhan.gamjamarket.member.domain.BadCredentialException;
+import project.duhan.gamjamarket.member.domain.Member;
+import project.duhan.gamjamarket.member.domain.MemberRepository;
 
 @Service
 @Transactional

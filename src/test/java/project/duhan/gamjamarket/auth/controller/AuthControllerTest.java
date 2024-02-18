@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import project.duhan.gamjamarket.auth.application.AuthService;
 import project.duhan.gamjamarket.auth.controller.dto.MemberLoginRequest;
 import project.duhan.gamjamarket.auth.controller.dto.MemberRegisterRequest;
-import project.duhan.gamjamarket.auth.domain.BadCredentialException;
+import project.duhan.gamjamarket.member.domain.BadCredentialException;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;

@@ -1,4 +1,4 @@
-package project.duhan.gamjamarket.auth.domain;
+package project.duhan.gamjamarket.member.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
