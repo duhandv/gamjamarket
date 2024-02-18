@@ -70,4 +70,9 @@ class AuthControllerTest {
             .andExpect(status().isUnauthorized());
     }
 
+    @Test
+    void postMemberLogout() throws Exception {
+        mockMvc.perform(post("/api/auth/logout")).andDo(print()).andExpect(status().isOk());
+    }
+
 }
