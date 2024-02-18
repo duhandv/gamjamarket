@@ -6,9 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import project.duhan.gamjamarket.auth.domain.BadCredentialException;
-import project.duhan.gamjamarket.auth.domain.Member;
-import project.duhan.gamjamarket.auth.domain.MemberRepository;
+import project.duhan.gamjamarket.member.domain.BadCredentialException;
+import project.duhan.gamjamarket.member.domain.Member;
+import project.duhan.gamjamarket.member.domain.MemberRepository;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertThrows;
