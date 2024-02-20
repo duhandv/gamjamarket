@@ -1,6 +1,8 @@
 package project.duhan.gamjamarket.member.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,15 +23,16 @@ public class Member {
 
     private String phone;
 
+    @Enumerated(value = EnumType.STRING)
+    private RegionVerificationState regionVerificationState = RegionVerificationState.NONE;
+
+    private String region;
+
     protected Member() {
     }
 
-    public Member(String loginId, String password, String phone) {
-        this(null, loginId, password, phone);
-    }
-
     @Builder
-    private Member(Long id, String loginId, String password, String phone) {
+    public Member(Long id, String loginId, String password, String phone) {
         this.id = id;
         this.loginId = loginId;
         this.password = password;
@@ -40,6 +43,10 @@ public class Member {
         if (!this.password.equals(password)) {
             throw new BadCredentialException();
         }
+    }
+
+    public void verifyRegion() {
+        regionVerificationState = RegionVerificationState.VERIFIED;
     }
 
 }

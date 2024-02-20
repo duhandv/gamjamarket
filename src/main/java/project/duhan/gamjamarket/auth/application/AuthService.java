@@ -17,7 +17,7 @@ public class AuthService {
     }
 
     public void register(String loginId, String password, String phone) {
-        Member member = new Member(loginId, password, phone);
+        Member member = Member.builder().loginId(loginId).password(password).phone(phone).build();
         memberRepository.save(member);
     }
 
