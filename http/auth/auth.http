@@ -1,0 +1,22 @@
+### 1. 회원가입
+POST {{gamajamarket-api}}/api/auth/register
+Content-Type: application/json
+
+{
+  "loginId": "{{loginId}}",
+  "password": "{{password}}"
+}
+
+### 2. 로그인
+POST {{gamajamarket-api}}/api/auth/login
+Content-Type: application/json
+
+{
+  "loginId": "{{loginId}}",
+  "password": "{{password}}"
+}
+
+
+### 3. 로그아웃
+POST {{gamajamarket-api}}/api/auth/logout
+Content-Type: application/json
