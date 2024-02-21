@@ -21,6 +21,7 @@ class MemberRepositoryTest {
 
         Member findMember = memberRepository.findById(savedMember.getId()).orElseThrow();
         then(findMember.getLoginId()).isEqualTo("loginId");
+        then(findMember.getPassword()).isEqualTo("password");
     }
 
 }
