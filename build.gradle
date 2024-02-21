@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version "${springBootVersion}"
     id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
     id 'io.spring.javaformat' version "${springJavaFormatVersion}"
+    id 'jacoco'
 }
 apply plugin: 'io.spring.javaformat'
 
@@ -27,6 +28,38 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
+
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.8
+            }
+        }
+    }
+}
+
+tasks.register('testCoverage', Test) {
+    group 'verification'
+    description 'Runs the unit tests with coverage'
+
+    dependsOn(':test',
+            ':jacocoTestReport',
+            ':jacocoTestCoverageVerification')
+
+    jacocoTestReport.mustRunAfter(test)
+    jacocoTestCoverageVerification.mustRunAfter(jacocoTestReport)
 }
