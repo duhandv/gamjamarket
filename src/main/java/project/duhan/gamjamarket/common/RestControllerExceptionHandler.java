@@ -12,12 +12,12 @@ public class RestControllerExceptionHandler {
 
     @ExceptionHandler(BadCredentialException.class)
     public ResponseEntity<ErrorResult> handlerBadCredentialException(BadCredentialException exception) {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new ErrorResult(exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ErrorResult.of(exception.getMessage()));
     }
 
     @ExceptionHandler(UnAuthenticateException.class)
-    public ResponseEntity<ErrorResult> handlerUnAuthenticateException(BadCredentialException exception) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResult(exception.getMessage()));
+    public ResponseEntity<ErrorResult> handlerUnAuthenticateException(UnAuthenticateException exception) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ErrorResult.of(exception.getMessage()));
     }
 
 }
