@@ -19,9 +19,9 @@ public class MemberService {
         this.addressGetter = addressGetter;
     }
 
-    public void verifyRegion(Long memberId, double latitude, double longitude) {
+    public void verifyRegion(Long memberId, double longitude, double latitude) {
         Member member = memberRepository.findById(memberId).orElseThrow();
-        Address address = addressGetter.get(latitude, longitude);
+        Address address = addressGetter.get(longitude, latitude);
         member.verifyRegion(address);
     }
 

@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "total_count": 2
+  },
+  "documents": [
+    {
+      "region_type": "B",
+      "code": "1159010800",
+      "address_name": "서울특별시 동작구 대방동",
+      "region_1depth_name": "서울특별시",
+      "region_2depth_name": "동작구",
+      "region_3depth_name": "대방동",
+      "region_4depth_name": "",
+      "x": 126.92634350000763,
+      "y": 37.50816426100698
+    },
+    {
+      "region_type": "H",
+      "code": "1159066000",
+      "address_name": "서울특별시 동작구 대방동",
+      "region_1depth_name": "서울특별시",
+      "region_2depth_name": "동작구",
+      "region_3depth_name": "대방동",
+      "region_4depth_name": "",
+      "x": 126.92634350000763,
+      "y": 37.50816426100698
+    }
+  ]
+}

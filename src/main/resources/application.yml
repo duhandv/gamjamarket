@@ -1,0 +1,23 @@
+#server.servlet.session.cookie.max-age=1800
+server:
+  servlet:
+    session:
+      tracking-modes: cookie
+      timeout: 60m
+spring:
+  config:
+    import:
+      - secret.yml
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            logger-level: FULL
+logging:
+  level:
+    root: debug
+
+kakao:
+  map:
+    url: "https://dapi.kakao.com"

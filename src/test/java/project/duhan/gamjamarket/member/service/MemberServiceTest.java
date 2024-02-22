@@ -32,11 +32,11 @@ public class MemberServiceTest {
         double latitude = 37.5519;
         double longitude = 126.9918;
         given(memberRepository.findById(1L)).willReturn(Optional.of(member));
-        given(addressGetter.get(latitude, longitude)).willReturn(new Address("서울시", "동작구", "대방동"));
+        given(addressGetter.get(latitude, longitude)).willReturn(new Address("서울특별시", "동작구", "대방동"));
 
         memberService.verifyRegion(1L, latitude, longitude);
 
-        then(member.getAddress().getDepth1()).isEqualTo("서울시");
+        then(member.getAddress().getDepth1()).isEqualTo("서울특별시");
         then(member.getAddress().getDepth2()).isEqualTo("동작구");
         then(member.getAddress().getDepth3()).isEqualTo("대방동");
     }
@@ -47,11 +47,11 @@ public class MemberServiceTest {
         double latitude = 37.5519;
         double longitude = 126.9918;
         given(memberRepository.findById(1L)).willReturn(Optional.of(member));
-        given(addressGetter.get(latitude, longitude)).willReturn(new Address("서울시", "강남구", "청담동"));
+        given(addressGetter.get(latitude, longitude)).willReturn(new Address("서울특별시", "강남구", "청담동"));
 
         memberService.verifyRegion(1L, latitude, longitude);
 
-        then(member.getAddress().getDepth1()).isEqualTo("서울시");
+        then(member.getAddress().getDepth1()).isEqualTo("서울특별시");
         then(member.getAddress().getDepth2()).isEqualTo("강남구");
         then(member.getAddress().getDepth3()).isEqualTo("청담동");
     }

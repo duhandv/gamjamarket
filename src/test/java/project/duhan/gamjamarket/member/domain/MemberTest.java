@@ -16,7 +16,7 @@ class MemberTest {
     @Test
     void memberRegionVerification_isVerified_whenVerified() {
         Member member = Member.builder().build();
-        Address address = new Address("서울시", "동작구", "대방동");
+        Address address = new Address("서울특별시", "동작구", "대방동");
         member.verifyRegion(address);
 
         then(member.getRegionVerifyState()).isEqualTo(RegionVerifyState.VERIFIED);
@@ -25,10 +25,10 @@ class MemberTest {
     @Test
     void memberAddressCreated_whenRegionVerified() {
         Member member = Member.builder().build();
-        Address address = new Address("서울시", "동작구", "대방동");
+        Address address = new Address("서울특별시", "동작구", "대방동");
         member.verifyRegion(address);
 
-        then(member.getAddress().getDepth1()).isEqualTo("서울시");
+        then(member.getAddress().getDepth1()).isEqualTo("서울특별시");
     }
 
 }
