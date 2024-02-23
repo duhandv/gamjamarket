@@ -26,8 +26,16 @@ class LoginMemberArgumentResolverTest {
     }
 
     @Test
-    void verifyFalse_whenNotHasLoginAnnotation() throws NoSuchMethodException {
+    void verifyFail_whenNotHasLoginAnnotation() throws NoSuchMethodException {
         Method method = TestAuthController.class.getDeclaredMethod("notHasLoginAnnotation", Long.class);
+        MethodParameter methodParameter = MethodParameter.forExecutable(method, 0);
+
+        then(loginMemberArgumentResolver.supportsParameter(methodParameter)).isFalse();
+    }
+
+    @Test
+    void verifyFail_whenNotHasLongType() throws NoSuchMethodException {
+        Method method = TestAuthController.class.getDeclaredMethod("notHasLongType", String.class);
         MethodParameter methodParameter = MethodParameter.forExecutable(method, 0);
 
         then(loginMemberArgumentResolver.supportsParameter(methodParameter)).isFalse();
@@ -63,6 +71,9 @@ class LoginMemberArgumentResolverTest {
         }
 
         public void notHasLoginAnnotation(Long memberId) {
+        }
+
+        public void notHasLongType(@Login String memberId) {
         }
 
     }

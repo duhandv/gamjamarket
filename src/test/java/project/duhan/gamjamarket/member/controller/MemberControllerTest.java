@@ -34,16 +34,23 @@ class MemberControllerTest {
     private MemberQueryService memberQueryService;
 
     @Test
-    void getMember() throws Exception {
+    void getMemberSuccess() throws Exception {
         MockHttpSession loginMember = login();
         MemberQueryResponse response = new MemberQueryResponse("01012341234", "서울특별시 동작구 대방동");
-
         given(memberQueryService.get(1L)).willReturn(response);
 
         mockMvc.perform(get("/api/member").session(loginMember))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().json(objectMapper.writeValueAsString(DataResult.of(response))));
+    }
+
+    @Test
+    void getMemberFail() throws Exception {
+        MemberQueryResponse response = new MemberQueryResponse("01012341234", "서울특별시 동작구 대방동");
+        given(memberQueryService.get(1L)).willReturn(response);
+
+        mockMvc.perform(get("/api/member")).andDo(print()).andExpect(status().isUnauthorized());
     }
 
     private MockHttpSession login() {

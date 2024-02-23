@@ -3,17 +3,22 @@ package project.duhan.gamjamarket.member.infra;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import project.duhan.gamjamarket.member.domain.Address;
 
-import java.util.List;
-
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonNaming(value = SnakeCaseStrategy.class)
 @Getter
 public class KakaoAddressFetchResult {
 
     private List<Document> documents;
 
+    @NoArgsConstructor
+    @AllArgsConstructor
     @JsonNaming(value = SnakeCaseStrategy.class)
     @Getter
     static class Document {
@@ -42,7 +47,7 @@ public class KakaoAddressFetchResult {
     }
 
     @Getter
-    enum RegionType {
+    public enum RegionType {
 
         HAENGJEONGDONG("H"), BEOBJEONGDONG("B");
 
