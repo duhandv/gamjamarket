@@ -47,6 +47,11 @@ test {
 
 jacocoTestReport {
     dependsOn test
+    reports {
+        xml.required = false
+        csv.required = true
+        html.required = true
+    }
 }
 
 jacocoTestCoverageVerification {
