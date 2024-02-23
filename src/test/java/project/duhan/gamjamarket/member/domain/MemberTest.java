@@ -31,4 +31,10 @@ class MemberTest {
         then(member.getAddress().getDepth1()).isEqualTo("서울특별시");
     }
 
+    @Test
+    void testBuilderToString() {
+        String string = Member.builder().toString();
+        then(string).contains("Member");
+    }
+
 }
