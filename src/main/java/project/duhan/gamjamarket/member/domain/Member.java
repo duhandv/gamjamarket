@@ -1,5 +1,7 @@
 package project.duhan.gamjamarket.member.domain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -17,16 +19,24 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "login_id")
     private String loginId;
 
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "phone")
     private String phone;
 
+    @Column(name = "region_verify_state")
     @Enumerated(value = EnumType.STRING)
-    private RegionVerificationState regionVerificationState = RegionVerificationState.NONE;
+    private RegionVerifyState regionVerifyState = RegionVerifyState.NONE;
 
+    @Column(name = "region")
     private String region;
+
+    @Embedded
+    private Address address;
 
     protected Member() {
     }
@@ -45,8 +55,9 @@ public class Member {
         }
     }
 
-    public void verifyRegion() {
-        regionVerificationState = RegionVerificationState.VERIFIED;
+    public void verifyRegion(Address address) {
+        this.address = address;
+        regionVerifyState = RegionVerifyState.VERIFIED;
     }
 
 }

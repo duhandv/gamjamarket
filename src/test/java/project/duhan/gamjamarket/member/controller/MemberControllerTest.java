@@ -41,9 +41,9 @@ class MemberControllerTest {
         given(memberQueryService.get(1L)).willReturn(response);
 
         mockMvc.perform(get("/api/member").session(loginMember))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(DataResult.of(response))));
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(content().json(objectMapper.writeValueAsString(DataResult.of(response))));
     }
 
     private MockHttpSession login() {

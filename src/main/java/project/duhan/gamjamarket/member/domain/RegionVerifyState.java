@@ -1,6 +1,6 @@
 package project.duhan.gamjamarket.member.domain;
 
-public enum RegionVerificationState {
+public enum RegionVerifyState {
 
     VERIFIED, NONE
 

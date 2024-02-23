@@ -1,2 +1,6 @@
 ### 1. 개인정보 조회
 GET {{gamajamarket-api}}/api/member
+
+
+### test
+GET {{gamajamarket-api}}/api/member?longitude=127.071367614735&latitude=37.5464762611364
