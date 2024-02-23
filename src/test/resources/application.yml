@@ -8,4 +8,4 @@ spring:
 kakao:
   api-secret-key: 123123
   map:
-    url: ""
+    url: "https://dapi.kakao.com"
