@@ -24,8 +24,8 @@ class KakaoLocalApiTest {
     @Test
     void parsingKakaoMapJsonResponse() {
         stubFor(get(urlPathEqualTo("/v2/local/geo/coord2regioncode"))
-                .willReturn(aResponse().withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-                        .withBodyFile("kakao-map-response.json")));
+            .willReturn(aResponse().withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                .withBodyFile("kakao-map-response.json")));
 
         KakaoAddressFetchResult fetchResult = kakaoLocalApi.fetchAddress("apikey", 126.926343500008, 37.508164261);
 
