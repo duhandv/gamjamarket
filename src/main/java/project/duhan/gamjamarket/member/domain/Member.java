@@ -32,9 +32,6 @@ public class Member {
     @Enumerated(value = EnumType.STRING)
     private RegionVerifyState regionVerifyState = RegionVerifyState.NONE;
 
-    @Column(name = "region")
-    private String region;
-
     @Embedded
     private Address address;
 
@@ -58,6 +55,10 @@ public class Member {
     public void verifyRegion(Address address) {
         this.address = address;
         regionVerifyState = RegionVerifyState.VERIFIED;
+    }
+
+    public String getRegion() {
+        return address.getDepth2();
     }
 
 }
