@@ -32,7 +32,7 @@ class MemberTest {
     }
 
     @Test
-    void testBuilderToString() {
+    void memberBuilderToString() {
         String string = Member.builder().toString();
         then(string).contains("Member");
     }
