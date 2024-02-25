@@ -14,10 +14,12 @@ spring:
         config:
           default:
             logger-level: FULL
-logging:
-  level:
-    root: debug
-
+  session:
+    store-type: redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
 kakao:
   map:
     url: "https://dapi.kakao.com"

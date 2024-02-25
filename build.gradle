@@ -31,6 +31,9 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     // wiremock
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-stub-runner'
+    // redis
+    implementation 'org.springframework.session:spring-session-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 dependencyManagement {
