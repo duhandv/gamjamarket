@@ -58,6 +58,9 @@ public class Member {
     }
 
     public String getRegion() {
+        if (regionVerifyState == RegionVerifyState.NONE) {
+            return "";
+        }
         return address.getDepth2();
     }
 

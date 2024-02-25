@@ -2,6 +2,7 @@ package project.duhan.gamjamarket.member.domain;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.BDDAssertions.then;
 
 class MemberTest {
@@ -29,6 +30,14 @@ class MemberTest {
         member.verifyRegion(address);
 
         then(member.getAddress().getDepth1()).isEqualTo("서울특별시");
+    }
+
+    @Test
+    void returnEmptyString_whenRegionNotVerified() {
+        Member member = Member.builder().build();
+
+        assertThat(member.getRegionVerifyState()).isEqualTo(RegionVerifyState.NONE);
+        assertThat(member.getRegion()).isEqualTo("");
     }
 
     @Test
