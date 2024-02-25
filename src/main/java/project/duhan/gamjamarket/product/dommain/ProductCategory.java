@@ -1,19 +1,15 @@
 package project.duhan.gamjamarket.product.dommain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
+import project.duhan.gamjamarket.common.domain.BaseEntity;
 
 @Getter
 @Entity
-public class ProductCategory {
+public class ProductCategory extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @Column(name = "name")
     private String name;
 
     protected ProductCategory() {

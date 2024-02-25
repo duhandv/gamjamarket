@@ -3,13 +3,13 @@ package project.duhan.gamjamarket.product.domain;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import project.duhan.gamjamarket.product.dommain.ProductCategory;
 import project.duhan.gamjamarket.product.dommain.ProductCategoryRepository;
+import project.duhan.gamjamarket.support.tset.RepositoryTest;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
-@DataJpaTest
+@RepositoryTest
 class ProductCategoryRepositoryTest {
 
     @Autowired

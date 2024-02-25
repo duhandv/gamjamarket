@@ -1,5 +1,7 @@
 package project.duhan.gamjamarket.product.dommain;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,6 +9,7 @@ import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import project.duhan.gamjamarket.common.domain.Money;
+import project.duhan.gamjamarket.common.domain.MoneyConverter;
 
 @Getter
 @Entity
@@ -16,16 +19,23 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "member_id")
     private Long memberId;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "region")
     private String region;
 
+    @Convert(converter = MoneyConverter.class)
+    @Column(name = "amount")
     private Money amount;
 
+    @Column(name = "category_id")
     private Long categoryId;
 
+    @Column(name = "like_count")
     private int likeCount = 0;
 
     private ProductState state = ProductState.WAIT;

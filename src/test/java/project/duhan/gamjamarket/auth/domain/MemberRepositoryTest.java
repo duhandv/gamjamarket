@@ -2,13 +2,13 @@ package project.duhan.gamjamarket.auth.domain;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import project.duhan.gamjamarket.member.domain.Member;
 import project.duhan.gamjamarket.member.domain.MemberRepository;
+import project.duhan.gamjamarket.support.tset.RepositoryTest;
 
 import static org.assertj.core.api.BDDAssertions.then;
 
-@DataJpaTest
+@RepositoryTest
 class MemberRepositoryTest {
 
     @Autowired
