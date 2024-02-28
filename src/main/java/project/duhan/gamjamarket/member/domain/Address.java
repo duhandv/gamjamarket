@@ -1,9 +1,11 @@
 package project.duhan.gamjamarket.member.domain;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import lombok.Getter;
 
 @Getter
+@Embeddable
 public class Address {
 
     @Column(name = "address_depth1")
@@ -14,6 +16,9 @@ public class Address {
 
     @Column(name = "address_depth3")
     private String depth3;
+
+    protected Address() {
+    }
 
     public Address(String depth1, String depth2, String depth3) {
         this.depth1 = depth1;
