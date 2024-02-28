@@ -1,11 +1,12 @@
 package project.duhan.gamjamarket.common.domain;
 
-import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import project.duhan.gamjamarket.product.dommain.ProductCategory;
-import project.duhan.gamjamarket.product.dommain.ProductCategoryRepository;
+import project.duhan.gamjamarket.product.domain.ProductCategory;
+import project.duhan.gamjamarket.product.domain.ProductCategoryRepository;
 import project.duhan.gamjamarket.support.tset.RepositoryTest;
+
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

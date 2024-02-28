@@ -9,8 +9,8 @@ import project.duhan.gamjamarket.common.domain.Money;
 import project.duhan.gamjamarket.member.domain.Address;
 import project.duhan.gamjamarket.member.domain.Member;
 import project.duhan.gamjamarket.member.domain.MemberRepository;
-import project.duhan.gamjamarket.product.dommain.Product;
-import project.duhan.gamjamarket.product.dommain.ProductRepository;
+import project.duhan.gamjamarket.product.domain.Product;
+import project.duhan.gamjamarket.product.domain.ProductRepository;
 import project.duhan.gamjamarket.product.service.dto.ProductRegisterCommand;
 import project.duhan.gamjamarket.product.service.dto.ProductUpdateCommand;
 
@@ -58,12 +58,12 @@ public class ProductServiceTest {
     void updateProduct() {
         Member member = createRegionVerifiedMember();
         Product product = Product.builder()
-                .id(2L)
-                .amount(Money.wons(1000))
-                .name("삼성모니터")
-                .categoryId(1L)
-                .memberId(member.getId())
-                .build();
+            .id(2L)
+            .amount(Money.wons(1000))
+            .name("삼성모니터")
+            .categoryId(1L)
+            .memberId(member.getId())
+            .build();
         given(memberRepository.findById(any())).willReturn(Optional.of(member));
         given(productRepository.findById(any())).willReturn(Optional.of(product));
 
@@ -79,7 +79,7 @@ public class ProductServiceTest {
         given(memberRepository.findById(any())).willReturn(Optional.of(member));
 
         assertThrows(IllegalStateException.class, () -> productService
-                .update(new ProductUpdateCommand(any(), member.getId(), "엘지모니터", Money.wons(1500), 3L)));
+            .update(new ProductUpdateCommand(any(), member.getId(), "엘지모니터", Money.wons(1500), 3L)));
     }
 
     private Member createRegionVerifiedMember() {

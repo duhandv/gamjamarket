@@ -39,7 +39,7 @@ class MemberControllerTest {
         MemberQueryResponse response = new MemberQueryResponse("01012341234", "서울특별시 동작구 대방동");
         given(memberQueryService.get(1L)).willReturn(response);
 
-        mockMvc.perform(get("/api/member").session(loginMember))
+        mockMvc.perform(get("/api/members").session(loginMember))
             .andDo(print())
             .andExpect(status().isOk())
             .andExpect(content().json(objectMapper.writeValueAsString(DataResult.of(response))));
@@ -50,7 +50,7 @@ class MemberControllerTest {
         MemberQueryResponse response = new MemberQueryResponse("01012341234", "서울특별시 동작구 대방동");
         given(memberQueryService.get(1L)).willReturn(response);
 
-        mockMvc.perform(get("/api/member")).andDo(print()).andExpect(status().isUnauthorized());
+        mockMvc.perform(get("/api/members")).andDo(print()).andExpect(status().isUnauthorized());
     }
 
     private MockHttpSession login() {

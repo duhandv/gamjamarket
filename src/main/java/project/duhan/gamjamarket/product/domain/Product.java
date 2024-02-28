@@ -1,4 +1,4 @@
-package project.duhan.gamjamarket.product.dommain;
+package project.duhan.gamjamarket.product.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;

@@ -5,8 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 import project.duhan.gamjamarket.member.domain.Member;
 import project.duhan.gamjamarket.member.domain.MemberRepository;
 import project.duhan.gamjamarket.member.domain.RegionVerifyState;
-import project.duhan.gamjamarket.product.dommain.Product;
-import project.duhan.gamjamarket.product.dommain.ProductRepository;
+import project.duhan.gamjamarket.product.domain.Product;
+import project.duhan.gamjamarket.product.domain.ProductRepository;
 import project.duhan.gamjamarket.product.service.dto.ProductRegisterCommand;
 import project.duhan.gamjamarket.product.service.dto.ProductUpdateCommand;
 
