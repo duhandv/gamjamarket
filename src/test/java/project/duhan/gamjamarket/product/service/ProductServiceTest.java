@@ -82,6 +82,28 @@ public class ProductServiceTest {
             .update(new ProductUpdateCommand(any(), member.getId(), "엘지모니터", Money.wons(1500), 3L)));
     }
 
+    @Test
+    void increaseLikeCount_whenLikeProduct() {
+        Product product = Product.builder().id(1L).memberId(2L).build();
+        given(productRepository.findById(any())).willReturn(Optional.of(product));
+
+        productService.like(1L, 2L);
+
+        then(product.getLikeCount()).isEqualTo(1);
+    }
+
+    @Test
+    void decreaseLikeCount_whenUnlike() {
+        Product product = Product.builder().id(1L).memberId(2L).build();
+        given(productRepository.findById(any())).willReturn(Optional.of(product));
+
+        productService.like(1L, 1L);
+        productService.like(1L, 1L);
+        productService.cancelLike(1L, 1L);
+
+        then(product.getLikeCount()).isEqualTo(1);
+    }
+
     private Member createRegionVerifiedMember() {
         Member member = Member.builder().id(1L).build();
         member.verifyRegion(new Address("서울특별시", "동작구", "대방동"));

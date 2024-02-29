@@ -41,4 +41,16 @@ public class ProductService {
         product.update(command.name(), command.amount(), member.getRegion(), command.categoryId());
     }
 
+    public void like(Long memberId, Long productId) {
+        Product product = productRepository.findById(productId).orElseThrow();
+        product.like(memberId);
+        productRepository.save(product);
+    }
+
+    public void cancelLike(Long memberId, Long productId) {
+        Product product = productRepository.findById(productId).orElseThrow();
+        product.cancelLike(memberId);
+        productRepository.save(product);
+    }
+
 }

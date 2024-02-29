@@ -5,6 +5,7 @@ import project.duhan.gamjamarket.common.domain.Money;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.assertj.core.api.BDDAssertions.thenThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ProductTest {
 
@@ -30,9 +31,9 @@ public class ProductTest {
 
     @Test
     void productLikeCountIncrease() {
-        Product product = Product.builder().build();
-        product.like();
-        product.like();
+        Product product = Product.builder().memberId(2L).build();
+        product.like(1L);
+        product.like(1L);
         then(product.getLikeCount()).isEqualTo(2);
     }
 
@@ -60,6 +61,14 @@ public class ProductTest {
         then(product.getAmount()).isEqualTo(Money.wons(125000));
         then(product.getRegion()).isEqualTo("청담동");
         then(product.getCategoryId()).isEqualTo(2L);
+    }
+
+    @Test
+    void throwException_whenUserLikeItBySelf() {
+        Product product = Product.builder().name("무궁화호").amount(Money.wons(10000)).memberId(1L).build();
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> product.like(1L));
+        then(exception.getMessage()).isEqualTo("자신의 상품은 좋아요할 수 없습니다.");
     }
 
     @Test
