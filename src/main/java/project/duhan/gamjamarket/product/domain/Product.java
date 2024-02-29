@@ -8,12 +8,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
+import project.duhan.gamjamarket.common.domain.BaseEntity;
 import project.duhan.gamjamarket.common.domain.Money;
 import project.duhan.gamjamarket.common.domain.MoneyConverter;
 
 @Getter
 @Entity
-public class Product {
+public class Product extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,8 +65,12 @@ public class Product {
         state = ProductState.DELETED;
     }
 
-    public void like() {
+    public void like(Long memberId) {
+        if (this.memberId.equals(memberId)) {
+            throw new IllegalArgumentException("자신의 상품은 좋아요할 수 없습니다.");
+        }
         likeCount++;
+        registerEvent(new ProductLikedEvent(memberId, id));
     }
 
     public void update(String name, Money amount, String region, Long categoryId) {
@@ -73,6 +78,14 @@ public class Product {
         this.amount = amount;
         this.region = region;
         this.categoryId = categoryId;
+    }
+
+    public void cancelLike(Long memberId) {
+        if (this.memberId.equals(memberId)) {
+            throw new IllegalArgumentException("자신의 상품은 좋아요 취소할 수 없습니다.");
+        }
+        likeCount--;
+        registerEvent(new ProductCancelLikedEvent(memberId, id));
     }
 
 }

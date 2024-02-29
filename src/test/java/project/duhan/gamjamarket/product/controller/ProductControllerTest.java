@@ -86,6 +86,24 @@ public class ProductControllerTest {
             .andExpect(content().json(objectMapper.writeValueAsString(DataResult.of(response))));
     }
 
+    @Test
+    void postProductLike() throws Exception {
+        willDoNothing().given(productService).like(any(), any());
+
+        mockMvc.perform(post("/api/products/{productId}/like", 1L).session(login()))
+            .andDo(print())
+            .andExpect(status().isOk());
+    }
+
+    @Test
+    void postProductCancelLike() throws Exception {
+        willDoNothing().given(productService).cancelLike(any(), any());
+
+        mockMvc.perform(post("/api/products/{productId}/cancel-like", 1L).session(login()))
+            .andDo(print())
+            .andExpect(status().isOk());
+    }
+
     private MockHttpSession login() {
         MockHttpSession session = new MockHttpSession();
         session.setAttribute(AUTHORIZATION, 1L);

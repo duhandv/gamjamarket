@@ -48,4 +48,16 @@ public class ProductController {
         return ResponseEntity.ok(DataResult.of(productQueryService.findAll(memberId)));
     }
 
+    @PostMapping("/{productId}/like")
+    public ResponseEntity<Void> like(@Login Long memberId, @PathVariable Long productId) {
+        productService.like(memberId, productId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{productId}/cancel-like")
+    public ResponseEntity<Void> cancelLike(@Login Long memberId, @PathVariable Long productId) {
+        productService.cancelLike(memberId, productId);
+        return ResponseEntity.ok().build();
+    }
+
 }
