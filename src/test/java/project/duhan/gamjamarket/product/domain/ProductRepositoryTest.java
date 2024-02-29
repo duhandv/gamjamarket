@@ -3,8 +3,6 @@ package project.duhan.gamjamarket.product.domain;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import project.duhan.gamjamarket.common.domain.Money;
-import project.duhan.gamjamarket.product.dommain.Product;
-import project.duhan.gamjamarket.product.dommain.ProductRepository;
 import project.duhan.gamjamarket.support.tset.RepositoryTest;
 
 import static org.assertj.core.api.BDDAssertions.then;

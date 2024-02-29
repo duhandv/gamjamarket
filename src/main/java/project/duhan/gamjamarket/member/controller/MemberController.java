@@ -10,7 +10,7 @@ import project.duhan.gamjamarket.member.service.MemberQueryService;
 import project.duhan.gamjamarket.member.service.dto.MemberQueryResponse;
 
 @RestController
-@RequestMapping("/api/member")
+@RequestMapping("/api/members")
 public class MemberController {
 
     private final MemberQueryService memberQueryService;

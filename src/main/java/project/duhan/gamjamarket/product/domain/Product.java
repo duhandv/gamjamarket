@@ -1,4 +1,4 @@
-package project.duhan.gamjamarket.product.dommain;
+package project.duhan.gamjamarket.product.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Convert;
@@ -44,7 +44,8 @@ public class Product {
     }
 
     @Builder
-    public Product(String name, Long memberId, String region, Money amount, Long categoryId) {
+    public Product(Long id, String name, Long memberId, String region, Money amount, Long categoryId) {
+        this.id = id;
         this.name = name;
         this.memberId = memberId;
         this.region = region;

@@ -2,8 +2,6 @@ package project.duhan.gamjamarket.product.domain;
 
 import org.junit.jupiter.api.Test;
 import project.duhan.gamjamarket.common.domain.Money;
-import project.duhan.gamjamarket.product.dommain.Product;
-import project.duhan.gamjamarket.product.dommain.ProductState;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.assertj.core.api.BDDAssertions.thenThrownBy;

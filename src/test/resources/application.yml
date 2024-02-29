@@ -1,11 +1,15 @@
 spring:
   jpa:
-    show-sql: true
+    #    show-sql: true
     properties:
       hibernate:
-        format_sql: true
+#        format_sql: true
 
 kakao:
   api-secret-key: 123123
   map:
     url: "https://dapi.kakao.com"
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: trace
+    org.hibernate.SQL: debug
