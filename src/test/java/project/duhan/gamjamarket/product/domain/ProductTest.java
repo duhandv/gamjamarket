@@ -72,6 +72,14 @@ public class ProductTest {
     }
 
     @Test
+    void throwException_whenUserCancelLikeItBySelf() {
+        Product product = Product.builder().name("무궁화호").amount(Money.wons(10000)).memberId(1L).build();
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> product.cancelLike(1L));
+        then(exception.getMessage()).isEqualTo("자신의 상품은 좋아요 취소할 수 없습니다.");
+    }
+
+    @Test
     void productBuilderToString() {
         String string = Product.builder().toString();
         then(string).contains("Product");
