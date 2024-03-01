@@ -1,5 +1,6 @@
 package project.duhan.gamjamarket.auth.application;
 
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import project.duhan.gamjamarket.member.domain.BadCredentialException;
@@ -17,6 +18,10 @@ public class AuthService {
     }
 
     public void register(String loginId, String password, String phone) {
+        Optional<Member> findMember = memberRepository.findByLoginId(loginId);
+        if (findMember.isPresent()) {
+            throw new IllegalArgumentException("이미 존재하는 아이디입니다.");
+        }
         Member member = Member.builder().loginId(loginId).password(password).phone(phone).build();
         memberRepository.save(member);
     }

@@ -10,6 +10,7 @@ import project.duhan.gamjamarket.member.domain.BadCredentialException;
 import project.duhan.gamjamarket.member.domain.Member;
 import project.duhan.gamjamarket.member.domain.MemberRepository;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -28,9 +29,19 @@ class AuthServiceTest {
 
     @Test
     void register() {
+        given(memberRepository.findByLoginId(any())).willReturn(Optional.empty());
         authService.register("loginId", "password", "01012341234");
 
         verify(memberRepository, times(1)).save(any());
+    }
+
+    @Test
+    void failRegister_whenIdDuplicated() {
+        Member member = Member.builder().build();
+        given(memberRepository.findByLoginId("existId")).willReturn(Optional.of(member));
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> authService.register("existId", "password", "01012341234"));
+        assertThat(exception.getMessage()).isEqualTo("이미 존재하는 아이디입니다.");
     }
 
     @Test
