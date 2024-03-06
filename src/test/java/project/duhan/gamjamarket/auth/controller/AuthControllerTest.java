@@ -1,18 +1,14 @@
 package project.duhan.gamjamarket.auth.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import project.duhan.gamjamarket.auth.application.AuthService;
 import project.duhan.gamjamarket.auth.controller.dto.MemberLoginRequest;
 import project.duhan.gamjamarket.auth.controller.dto.MemberRegisterRequest;
 import project.duhan.gamjamarket.member.domain.BadCredentialException;
+import project.duhan.gamjamarket.support.tset.RestControllerTest;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -22,14 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(AuthController.class)
-@ExtendWith(MockitoExtension.class)
-class AuthControllerTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
+class AuthControllerTest extends RestControllerTest {
 
     @MockBean
     private AuthService authService;

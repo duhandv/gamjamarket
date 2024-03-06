@@ -1,15 +1,11 @@
 package project.duhan.gamjamarket.product.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
-import org.springframework.test.web.servlet.MockMvc;
 import project.duhan.gamjamarket.common.DataResult;
 import project.duhan.gamjamarket.product.controller.dto.ProductRegisterRequest;
 import project.duhan.gamjamarket.product.controller.dto.ProductUpdateRequest;
@@ -17,8 +13,7 @@ import project.duhan.gamjamarket.product.service.ProductQueryService;
 import project.duhan.gamjamarket.product.service.ProductService;
 import project.duhan.gamjamarket.product.service.dto.ProductQueryResponse;
 import project.duhan.gamjamarket.product.service.dto.ProductUpdateCommand;
-
-import java.util.List;
+import project.duhan.gamjamarket.support.tset.RestControllerTest;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.isA;
@@ -32,14 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ProductController.class)
-@ExtendWith(MockitoExtension.class)
-public class ProductControllerTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
+public class ProductControllerTest extends RestControllerTest {
 
     @MockBean
     private ProductService productService;

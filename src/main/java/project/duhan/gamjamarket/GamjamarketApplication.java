@@ -8,10 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-@OpenAPIDefinition(
-        servers = @Server(url = "/", description = "Default Server Url"),
-        info = @Info(title = "Gamja Merket", description = "동네기반 유저간 상품거래 서비스")
-)
+@OpenAPIDefinition(servers = @Server(url = "/", description = "Default Server Url"),
+        info = @Info(title = "Gamja Merket", description = "동네기반 유저간 상품거래 서비스"))
 @ConfigurationPropertiesScan
 @EnableFeignClients
 @SpringBootApplication
