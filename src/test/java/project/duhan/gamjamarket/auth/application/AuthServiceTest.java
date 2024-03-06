@@ -40,7 +40,8 @@ class AuthServiceTest {
         Member member = Member.builder().build();
         given(memberRepository.findByLoginId("existId")).willReturn(Optional.of(member));
 
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> authService.register("existId", "password", "01012341234"));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> authService.register("existId", "password", "01012341234"));
         assertThat(exception.getMessage()).isEqualTo("이미 존재하는 아이디입니다.");
     }
 
