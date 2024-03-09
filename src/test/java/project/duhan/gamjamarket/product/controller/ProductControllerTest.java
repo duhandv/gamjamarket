@@ -6,7 +6,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
-import project.duhan.gamjamarket.common.DataResult;
 import project.duhan.gamjamarket.product.controller.dto.ProductRegisterRequest;
 import project.duhan.gamjamarket.product.controller.dto.ProductUpdateRequest;
 import project.duhan.gamjamarket.product.service.ProductQueryService;
@@ -23,7 +22,6 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ProductController.class)
@@ -71,7 +69,7 @@ public class ProductControllerTest extends RestControllerTest {
         mockMvc.perform(get("/api/products").session(login()))
             .andDo(print())
             .andExpect(status().isOk())
-            .andExpect(content().json(objectMapper.writeValueAsString(DataResult.of(response))));
+            .andExpect(dataResult(response));
     }
 
     @Test

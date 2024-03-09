@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockHttpSession;
-import project.duhan.gamjamarket.common.DataResult;
 import project.duhan.gamjamarket.member.service.MemberQueryService;
 import project.duhan.gamjamarket.member.service.dto.MemberQueryResponse;
 import project.duhan.gamjamarket.support.tset.RestControllerTest;
@@ -13,7 +12,6 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(MemberController.class)
@@ -31,7 +29,7 @@ class MemberControllerTest extends RestControllerTest {
         mockMvc.perform(get("/api/members").session(loginMember))
             .andDo(print())
             .andExpect(status().isOk())
-            .andExpect(content().json(objectMapper.writeValueAsString(DataResult.of(response))));
+            .andExpect(dataResult(response));
     }
 
     @Test
